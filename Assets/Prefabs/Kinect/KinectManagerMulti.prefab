@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7035898479933832968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714620145882980907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c5832264d4548429d5e2827ab79d0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7304628189218967931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714620145882980907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2f2bc9ba7308f46af72d41646ded12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &5712986825174416231
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1956587327756620, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_Name
+      value: KinectManagerMulti
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4522961957858814, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333445773802162, guid: be357af1078b33d4cb7f7d3cfc53d61b,
+        type: 3}
+      propertyPath: playerCalibrationPose
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333445773802162, guid: be357af1078b33d4cb7f7d3cfc53d61b,
+        type: 3}
+      propertyPath: minTimeBetweenGestures
+      value: 0.1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6520444037866718913, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: be357af1078b33d4cb7f7d3cfc53d61b, type: 3}
+--- !u!1 &5714620145882980907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1956587327756620, guid: be357af1078b33d4cb7f7d3cfc53d61b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5712986825174416231}
+  m_PrefabAsset: {fileID: 0}

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8524986074344596945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8524986074344596951}
+  - component: {fileID: 8524986074344596944}
+  m_Layer: 0
+  m_Name: GenManagerObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8524986074344596951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524986074344596945}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -6.2722034, z: -0.017499387}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8524986074344596944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524986074344596945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97901262692a8847a1e02df8071625b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpawnedElements: 5
+  preSpawned:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnableObjects:
+  - {fileID: 100000, guid: 7a91e4b5793eda542a7ec570e8b25ab8, type: 3}
+  - {fileID: 1353116442026822, guid: 7b1d15c49d6c7b74ea1e4529ff562402, type: 3}
+  Biomes:
+  - {fileID: 11400000, guid: 23d13419fee082f47af50c2a4286bf04, type: 2}
+  - {fileID: 11400000, guid: a4ab15305e4475e4bb9ed3043ac32d07, type: 2}
+  StartBiome: {fileID: 11400000, guid: a4ab15305e4475e4bb9ed3043ac32d07, type: 2}
+  currentBiome: {fileID: 0}
+  MustUseTransition: 0
+  spawnChance: 0.507
+  testBool: 1
+  currentElement: {fileID: 0}

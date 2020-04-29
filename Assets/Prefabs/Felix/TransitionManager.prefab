@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6232643549237446466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6232643549237446468}
+  - component: {fileID: 6232643549237446469}
+  m_Layer: 0
+  m_Name: TransitionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6232643549237446468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6232643549237446466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6232643549237446469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6232643549237446466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 446616f11c14082489ea9c443f6ef394, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _persistent: 1
+  mainCam: {fileID: 0}
+  LastSceneRenderTexture: {fileID: 8400000, guid: f2624b1952e2a6b4cafb55bc927d42b1,
+    type: 2}
+  NowSceneRenderTexture: {fileID: 8400000, guid: 27a85afb73b2fa749963892c9849034f,
+    type: 2}
+  renderMaterial: {fileID: 2100000, guid: d4f641361ba654642a84480ced5d7f51, type: 2}
+  ParticelMaterial: {fileID: 2100000, guid: 8c91a6ae1d1ba2a4d801badfdd86290b, type: 2}
+  ComputeShader: {fileID: 7200000, guid: 9d84f4a784f28ea43973ce1b92f02dfb, type: 3}
+  transitionMode: 0
+  particleLayer:
+    serializedVersion: 2
+    m_Bits: 4096
+  transitionTime: 1

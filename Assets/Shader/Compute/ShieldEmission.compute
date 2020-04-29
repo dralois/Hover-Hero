@@ -1,0 +1,33 @@
+﻿#pragma kernel CSMain
+
+// Particle's data
+struct Particle
+{
+	float3 Position;
+	float3 Velocity;
+	float TimeToLive;
+};
+
+// Particle's data, shared with the shader
+RWStructuredBuffer<Particle> particleBuffer;
+
+// Variables set from the CPU
+float deltaTime;
+float3 resetPosition;
+float3 resetVelocity;
+float resetTimeToLive;
+
+[numthreads(256, 1, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	particleBuffer[id.x].TimeToLive -= deltaTime;
+
+	if(particleBuffer[id.x].TimeToLive <= 0.0f)
+	{
+			particleBuffer[id.x].Position = resetPosition;
+			particleBuffer[id.x].Velocity = resetVelocity;
+			particleBuffer[id.x].TimeToLive = resetTimeToLive;
+	}
+
+	particleBuffer[id.x].Position += particleBuffer[id.x].Velocity * deltaTime;
+}

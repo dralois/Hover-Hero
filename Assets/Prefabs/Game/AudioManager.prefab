@@ -1,0 +1,251 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &9126108870295152749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9126108870295152750}
+  - component: {fileID: 9126108870295152751}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9126108870295152750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126108870295152749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9126108870295152751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126108870295152749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcf5bf6e61d1e1408799603b93c0609, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _persistent: 0
+  sounds:
+  - name: HurtMinecraft
+    clip: {fileID: 8300000, guid: 66003e45305de084a8dc8eacd9133fe5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DeathRoblox
+    clip: {fileID: 8300000, guid: 09ab338794a3f6143a150d09dbf204f7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hadouken
+    clip: {fileID: 8300000, guid: 13516a25fcd36a24cb1f10bb4325c9f0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fireball
+    clip: {fileID: 8300000, guid: f33dd3db48fb7cc46b341fd86eb97bd1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Start
+    clip: {fileID: 8300000, guid: 47658220093c9634bbf04e2728095731, type: 3}
+    volume: 0.24
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Lava
+    clip: {fileID: 8300000, guid: 70dece0f6feb2e84f97c77e9b6fdd687, type: 3}
+    volume: 0.5
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mine1
+    clip: {fileID: 8300000, guid: d3496ddb053df3344a9a961f8ac8c71a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mine2
+    clip: {fileID: 8300000, guid: 32582b42c9951224a8c78b3738caf7b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Mine3
+    clip: {fileID: 8300000, guid: b1f505c5a9e5a014285554cafb0dcc76, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks1
+    clip: {fileID: 8300000, guid: 288fb70d5a8482642a79236fae9c5f6d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks2
+    clip: {fileID: 8300000, guid: 0123f3cbac940b04795947eeb4e17534, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks3
+    clip: {fileID: 8300000, guid: 069fe9a913bab2d4095e39e2098f65f4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks4
+    clip: {fileID: 8300000, guid: 32f0c86bde79d9941b7523da139b6c7c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks5
+    clip: {fileID: 8300000, guid: 9df9ed9e5a3b2c04b9998095c7494cc3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks6
+    clip: {fileID: 8300000, guid: 8a152e1d78c95d94c90425fefeca265e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Rocks7
+    clip: {fileID: 8300000, guid: 348122455deba054faf0091a373412f0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Temple1
+    clip: {fileID: 8300000, guid: c8adbff1f34f1aa4d8cfd5191efb67a5, type: 3}
+    volume: 0.504
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Temple2
+    clip: {fileID: 8300000, guid: 8ca3ca218ce698543827adec04a2cc05, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Waterdrop1
+    clip: {fileID: 8300000, guid: c8a226f901c04224c8370d9fe98680fa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Waterdrop2
+    clip: {fileID: 8300000, guid: 444d1d84a5b9b8a4ca73393103309d5c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wood1
+    clip: {fileID: 8300000, guid: cc17badc518710b45bf9a8e008077af2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wood2
+    clip: {fileID: 8300000, guid: 52e99faf0c39f7d47b783cf678bd9521, type: 3}
+    volume: 0.509
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: 11421a4b83703fe4c821184c30574554, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Pickup
+    clip: {fileID: 8300000, guid: 76bcf9ca2c8c6534fa5e0081639b223e, type: 3}
+    volume: 0.494
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: _Main
+    clip: {fileID: 8300000, guid: 60a7c38a461356e42a91bc1d54e11bc6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ShieldStart
+    clip: {fileID: 8300000, guid: 721ef48bbedda764193705a0560ffef3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GameEnd
+    clip: {fileID: 8300000, guid: bc3b77a84e4219541a7b3ebe4ba040f6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 6eb500a871b12d04e8f8f359c56dffed, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Swing
+    clip: {fileID: 8300000, guid: a86839f3c90ca1446876652558f0eff4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ShieldLoop
+    clip: {fileID: 8300000, guid: c077e556ffb79ea458a5a02fbaff2e2d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ShieldHit
+    clip: {fileID: 8300000, guid: c0276369307199e458965d1910b13491, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Portal
+    clip: {fileID: 8300000, guid: 8e356c73c927a8e4f9132759c7203cb8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Blood
+    clip: {fileID: 8300000, guid: 84ac1f1f5ad0b75459159be1a6998a4d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Alert
+    clip: {fileID: 8300000, guid: cd5dd592fd0cdaa439d55a83f8be7097, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

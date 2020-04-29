@@ -1,0 +1,202 @@
+﻿// Each #kernel tells which function to compile; you can have many kernels
+//#pragma kernel CSMain
+#pragma kernel CSSetTexture
+#pragma kernel CSMoveParticles1
+#pragma kernel CSMoveParticles2
+#pragma kernel CSMoveParticles3
+#pragma kernel CSMoveParticlesSetOrigin
+#pragma kernel CSMoveParticles4
+#pragma enable_d3d11_debug_symbols
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+//RWTexture2D<float4> Result;
+
+//[numthreads(8,8,1)]
+//void CSMain (uint3 id : SV_DispatchThreadID)
+//{
+//    // TODO: insert actual code here!
+
+//    Result[id.xy] = float4(id.x & id.y, (id.x & 15)/15.0, (id.y & 15)/15.0, 0.0);
+//}
+
+struct Particle
+{
+	float3 position;
+    float3 velocity;
+    float3 destination;
+    float3 origin;
+    float4 sourceColor;
+    float4 destColor;
+    float4 currentColor;
+};
+
+RWStructuredBuffer<Particle> particleBuffer;
+
+float deltaTime;
+float direction;
+float timePassedSinceStart;
+float transitionTime;
+float3 center;
+float3 forward;
+
+//Set init position
+[numthreads(256,1,1)]
+void CSMoveParticles1(uint3 id: SV_DISPATCHTHREADID){
+	particleBuffer[id.x].position = particleBuffer[id.x].destination;
+	particleBuffer[id.x].velocity = 2.0f;//(abs(center-particleBuffer[id.x].position)+10)*10;
+
+	float partial = clamp(timePassedSinceStart/transitionTime,0.0f,1.0f);
+	float3 col = partial * particleBuffer[id.x].destColor.rgb +(1-partial)*particleBuffer[id.x].sourceColor.rgb;
+	particleBuffer[id.x].currentColor = float4(col,1);
+}
+
+//move outwards
+[numthreads(256,1,1)]
+void CSMoveParticles2(uint3 id: SV_DISPATCHTHREADID){
+	//float z = particleBuffer[id.x].destination.z;
+	// X: angular Y: out Z: random Z
+		float3 speeds = particleBuffer[id.x].velocity;
+		// Calculate out direction
+		float3 outDir = normalize(particleBuffer[id.x].position - center);
+		//calculate point on circle
+		float3 circlePoint = center + outDir*250;
+		
+		float3 toPointVector = circlePoint - particleBuffer[id.x].position;
+
+		// Calculate angular direction
+		float3 angDir = cross(normalize(forward), -outDir);
+		// Calculate random Z direction
+		//float3 randDir = float3(0, 0, 1.0f - (2.0f * particleBuffer[id.x].RandZ));
+		// Sum up with respective Velocities
+		float3 totalVel = angDir * speeds.x*200*2 + toPointVector * speeds.y*2;
+		// Update and save
+		particleBuffer[id.x].position.xy += totalVel.xy * deltaTime;
+		//particleBuffer[id.x].CurrDir = normalize(totalVel);
+		//particleBuffer[id.x].CrossDir = normalize(outDir);	
+
+
+	//float3 delta = -center-particleBuffer[id.x].position;
+	//float3 dir = normalize(delta);
+	//particleBuffer[id.x].velocity =300.0f*dir*sqrt(length(delta))*deltaTime;
+	//particleBuffer[id.x].position += particleBuffer[id.x].velocity * deltaTime;
+
+	//float partial = clamp(timePassedSinceStart/transitionTime,0.0f,1.0f);
+	//float3 col = partial * particleBuffer[id.x].destColor.rgb +(1-partial)*particleBuffer[id.x].sourceColor.rgb;
+	//particleBuffer[id.x].currentColor = float4(col,1);
+}
+
+float inStart;
+float inEnd;
+
+//move in circle
+[numthreads(256,1,1)]
+void CSMoveParticles3(uint3 id: SV_DISPATCHTHREADID){
+	
+		float3 speeds = particleBuffer[id.x].velocity;
+		// Calculate out direction
+		float3 outDir = normalize(particleBuffer[id.x].position - center);
+		//calculate point on circle
+		float3 circlePoint = center + outDir*250;
+		
+		float3 toPointVector = circlePoint - particleBuffer[id.x].position;
+
+		// Calculate angular direction
+		float3 angDir = cross(normalize(forward), -outDir);
+
+		float distanceToPoint = length(toPointVector);
+
+		float speedFactorDistance = clamp((250.0f/distanceToPoint),1.0f,20.0f);
+		// Calculate random Z direction
+		//float3 randDir = float3(0, 0, 1.0f - (2.0f * particleBuffer[id.x].RandZ));
+		// Sum up with respective Velocities
+		float3 totalVel = angDir * speeds.x*10*2 * speedFactorDistance;
+		// Update and save
+		particleBuffer[id.x].position.xy += totalVel.xy * deltaTime;
+
+
+	float partial = (timePassedSinceStart - inStart)/(inEnd - inStart);
+	//float partial = clamp(timePassedSinceStart/transitionTime,0.0f,1.0f);
+	float3 col = partial * particleBuffer[id.x].destColor.rgb +(1-partial)*particleBuffer[id.x].sourceColor.rgb;
+	particleBuffer[id.x].currentColor = float4(col,1);
+}
+
+float backStartTime;
+float backEndTime;
+float backPassedTime;
+
+//
+[numthreads(256,1,1)]
+void CSMoveParticlesSetOrigin(uint3 id: SV_DISPATCHTHREADID){
+	particleBuffer[id.x].origin = particleBuffer[id.x].position;
+}
+
+//fairly fast S-Function from x: 0 to 1 -> y: 0 to 1
+float Sigmoid(float x){
+	float Tmp = (8.0f*x-4.0f);
+	float result = (((8.0f * x-4.0f)/sqrt(1.0f+Tmp*Tmp))+1.0f)/2.0f;
+	return result;
+}
+
+//move to desstination back 
+[numthreads(256,1,1)]
+void CSMoveParticles4(uint3 id: SV_DISPATCHTHREADID){
+	////float z = particleBuffer[id.x].destination.z;
+	//float timeleft = transitionTime-timePassedSinceStart;
+	//float3 delta = particleBuffer[id.x].destination-particleBuffer[id.x].position;
+	//float3 vel = (delta/timeleft);
+	//particleBuffer[id.x].velocity = vel;
+	////float3 dir = normalize(delta);
+	////particleBuffer[id.x].velocity = 400.0f*dir*sqrt(length(delta))*deltaTime;
+	//particleBuffer[id.x].position += particleBuffer[id.x].velocity;// * deltaTime;
+	
+	
+
+	float partialPath = (timePassedSinceStart - backStartTime)/(backEndTime - backStartTime);
+
+	float3 deltaPath = particleBuffer[id.x].destination-particleBuffer[id.x].origin;
+	particleBuffer[id.x].position = particleBuffer[id.x].origin + deltaPath * Sigmoid(partialPath);
+
+	//float partial = clamp(timePassedSinceStart/transitionTime,0.0f,2.0f);
+	//float3 col = partial * particleBuffer[id.x].destColor.rgb +(1-partial)*particleBuffer[id.x].sourceColor.rgb;
+	//particleBuffer[id.x].currentColor = float4(col,1);
+}
+
+
+
+
+//SetTexture
+
+Texture2D<float4> TextureOriginal;
+Texture2D<float4> TextureDestination;
+float4x4 UNITY_MATRIX_MVP;
+//float3 cameraPos;
+//float3 viewDirection;
+float3 leftbottom;
+float3 rightbottom;
+float3 leftTop;
+float3 rightTop;
+float4x4 invVPM;
+
+[numthreads(32,32,1)]
+void CSSetTexture(uint3 id: SV_DISPATCHTHREADID){
+	uint width, height;
+	TextureOriginal.GetDimensions(width,height);
+	uint particleIndex = id.y*width+id.x;
+	
+	float WorldHeight = length(leftTop -leftbottom);
+	float WorldWidth = length(rightbottom-leftbottom);
+	
+	float plane = 200;
+	//particleBuffer[particleIndex].origin = mul(UNITY_MATRIX_MVP, float4(particleBuffer[particleIndex].position,1.0)).xyz;
+	//particleBuffer[particleIndex].origin = float3(float(id.x)/*/float(width)*/,float(id.y)/*/float(height)*/,leftbottom.z);
+	//particleBuffer[particleIndex].origin =mul(invVPM, float4((id.x/float(width)*2)-1,(id.y/float(width)*2)-1,1,1)).xyz;
+	//particleBuffer[particleIndex].destination.xyz = float3(id.x,id.y,0);
+	//particleBuffer[particleIndex].destination.xyz = float3(float(id.x)/*/float(width)*/,float(id.y)/*/float(height)*/,plane);
+	//particleBuffer[particleIndex].destination.xyz = mul(invVPM, float4((id.x/float(width)*2)-1,(id.y/float(width)*2)-1,1,1)*10).xyz;
+
+	particleBuffer[particleIndex].origin = float3(((id.x/float(width)*2)-1)*WorldWidth,((id.y/float(height)*2)-1)*WorldHeight,leftbottom.z*2.0f);
+	particleBuffer[particleIndex].destination = float3(((id.x/float(width)*2)-1)*WorldWidth,((id.y/float(height)*2)-1)*WorldHeight,leftbottom.z*2.0f);
+
+	particleBuffer[particleIndex].sourceColor = TextureOriginal[id.xy];
+	particleBuffer[particleIndex].destColor = TextureDestination[id.xy];
+}

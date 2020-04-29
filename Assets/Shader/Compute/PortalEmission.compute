@@ -1,0 +1,53 @@
+﻿#pragma kernel CSMain
+
+struct Particle
+{
+	float3 Position;
+	float3 ResetPos;
+	float3 Velocities;
+	float3 CurrDir;
+	float3 CrossDir;
+	float TimeToLive;
+	float ResetTTL;
+	float RandCol;
+	float RandZ;
+};
+
+// Particle's data, shared with the shader
+RWStructuredBuffer<Particle> particleBuffer;
+
+// Variables set from the CPU
+float deltaTime;
+float3 position;
+float3 rotationAxis;
+
+[numthreads(256, 1, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+	// Update time
+	particleBuffer[id.x].TimeToLive -= deltaTime;
+	// As long as there's time left
+	if(particleBuffer[id.x].TimeToLive > 0.0f)
+	{
+		// X: angular Y: out Z: random Z
+		float3 speeds = particleBuffer[id.x].Velocities;
+		// Calculate out direction
+		float3 outDir = normalize(particleBuffer[id.x].Position - position);
+		// Calculate angular direction
+		float3 angDir = cross(normalize(rotationAxis), -outDir);
+		// Calculate random Z direction
+		float3 randDir = float3(0, 0, 1.0f - (2.0f * particleBuffer[id.x].RandZ));
+		// Sum up with respective Velocities
+		float3 totalVel = angDir * speeds.x + outDir * speeds.y + randDir * speeds.z;
+		// Update and save
+		particleBuffer[id.x].Position += totalVel * deltaTime;
+		particleBuffer[id.x].CurrDir = normalize(totalVel);
+		particleBuffer[id.x].CrossDir = normalize(outDir);
+	}
+	else
+	{
+		// Reset position and ttl
+		particleBuffer[id.x].Position = particleBuffer[id.x].ResetPos;
+		particleBuffer[id.x].TimeToLive = particleBuffer[id.x].ResetTTL;
+	}
+}
